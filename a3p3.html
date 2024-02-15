@@ -87,6 +87,7 @@
       font-style: normal;
     }
 
+    /* General text styling */
     /* site-wide font size */
     html {
       font-family: lovatolight, serif;
@@ -119,6 +120,38 @@
       line-height: 1.5;
       letter-spacing: 0.5px;
       word-spacing: 3px;
+    }
+
+    /* link styling */
+    /* Remove default focus from all the links */
+    a {
+      outline: none;
+    }
+    /*Giving the link, visited, focus, and hover states some colors that go with the color of the horizontal bars at the top and bottom of the page*/ 
+    a:link,
+    a:visited {
+      color: #a66;
+    }
+    /* make the underlines disappear when hovering over the link */
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+
+    /* active state */
+    a:active {
+      color: transparent;
+      text-shadow: 0px 0px 1px #f00,
+        0px 0px 2px #f00,
+        0px 0px 3px black,
+        0px 0px 4px black;
+    }
+
+    /* inserting external link icon next to external links */
+    a[href*="http"] {
+      padding-right: 19px;
+      background: url(external-link-52.png) no-repeat 100% 0;
+      background-size: 16px 16px;
     }
   </style>
 </head>
