@@ -33,10 +33,19 @@ imageFilesnames.forEach(fileName => {
 });
 
 /* Wiring up the Darken/Lighten button */
-btn.addEventListener('click', () => {
-    if (overlay.style.backgroundColor === `rgba(0, 0, 0, 0)` || overlay.style.backgroundColor === ``) {
-       overlay.style.backgroundColor = `rgba(200, 200, 200, 1)`;
+// Add click event listener to the button
+btn.addEventListener('click', function() {
+    // Check the current class name of the button
+    const currentClass = btn.getAttribute('class');
+
+    // Toggle between dark and light classes
+    if (currentClass === 'dark') {
+        btn.setAttribute('class', 'light');
+        btn.textContent = 'Lighten';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     } else {
-       overlay.style.backgroundColor = `rgba(0, 0, 0, 0)`;
+        btn.setAttribute('class', 'dark');
+        btn.textContent = 'Darken';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
     }
- });
+});
