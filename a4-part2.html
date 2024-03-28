@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+   /* Style for the full image container */
+.full-img {
+  position: relative;
+  max-width: 800px; /* Adjust as needed */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Style for the displayed image */
+.displayed-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Style for the overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+}
+
+/* Style for the darken effect */
+.overlay.dark {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+}
+
+/* Style for the thumb bar */
+.thumb-bar {
+  margin-top: 20px; /* Add some space between full image and thumbnails */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  white-space: 
+
+  </style>
+</head>
+<body>
+  <div class="full-img">
+    <img class="displayed-img" src="" alt="">
+    <div class="overlay"></div>
+    <button id="darken-btn">Darken</button>
+  </div>
+  <div class="thumb-bar">
+    <!-- Thumbnails will be dynamically added here -->
+  </div>
+
+  <script>
+    // Filenames of each image
+    const imageFilenames = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg'];
+
+    // Alternative text for each image
+    const altTexts = {
+      'pic1.jpg': 'Image 1',
+      'pic2.jpg': 'Image 2',
+      'pic3.jpg': 'Image 3'
+    };
+
+    // Get thumb-bar container
+    const thumbBar = document.querySelector('.thumb-bar');
+
+    // Loop through filenames array
+    imageFilenames.forEach(filename => {
+      // Create img element
+      const img = document.createElement('img');
+      // Set src attribute
+      img.src = filename;
+      // Set alt attribute using altTexts object
+      img.alt = altTexts[filename];
+      // Add click event listener to each thumbnail
+      img.addEventListener('click', function() {
+        // Update displayed-img source and alt
+        const displayedImg = document.querySelector('.displayed-img');
+        displayedImg.src = this.src;
+        displayedImg.alt = this.alt;
+      });
+      // Append img to thumb-bar
+      thumbBar.appendChild(img);
+    });
+
+    // Get darken button
+    const darkenBtn = document.getElementById('darken-btn');
+    // Add click event listener to the button
+    darkenBtn.addEventListener('click', function() {
+      // Toggle darken effect by toggling a class on full-img
+      const fullImg = document.querySelector('.full-img');
+      fullImg.classList.toggle('darken');
+    });
+  </script>
+</body>
+</html>
