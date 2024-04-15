@@ -1,3 +1,10 @@
+/*
+  Name: Riddhi Tandel 
+  File: main.js 
+  Date: 14 April 2024 
+  in this assignmnet, we will fix the accessebility issues on the site provided 
+*/
+
 // functionality for showing/hiding the comments section
 
 const showHideBtn = document.querySelector('.show-hide');
@@ -30,11 +37,25 @@ form.onsubmit = function(e) {
 
 function submitComment() {
   const listItem = document.createElement('li');
+  const nameLabel = document.createElement('span');
+  const commentLabel = document.createElement('span');
   const namePara = document.createElement('p');
   const commentPara = document.createElement('p');
   const nameValue = nameField.value;
   const commentValue = commentField.value;
 
+  // Make author and message tabbable
+  namePara.setAttribute("tabindex", "0");
+  commentPara.setAttribute("tabindex", "0");
+
+  // Give author and comment labels
+  nameLabel.textContent = "Author: ";
+  commentLabel.textContent = "Comment: ";
+
+  namePara.appendChild(nameLabel);
+  commentPara.appendChild(commentLabel);
+  
+  // Set input from form
   namePara.textContent = nameValue;
   commentPara.textContent = commentValue;
 
